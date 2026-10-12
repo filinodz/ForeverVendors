@@ -1,0 +1,28 @@
+name: Vendor or catalogue proposal
+description: Propose a verified vendor or item change
+title: "[Proposal]: "
+labels: ["enhancement", "verification-needed"]
+body:
+  - type: textarea
+    id: proposal
+    attributes:
+      label: Proposed change
+    validations:
+      required: true
+  - type: textarea
+    id: ids
+    attributes:
+      label: Item/vendor IDs and names
+    validations:
+      required: true
+  - type: textarea
+    id: evidence
+    attributes:
+      label: Verification evidence
+      description: Link the Forever-compatible source and confirm local database existence.
+    validations:
+      required: true
+  - type: textarea
+    id: rollback
+    attributes:
+      label: Collision and removal considerations

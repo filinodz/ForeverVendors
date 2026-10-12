@@ -1,0 +1,314 @@
+# ForeverRepack vendor migration audit
+
+Generated: 2026-10-12 17:14:41 +01:00
+
+## Result
+
+- Original VMaNGOS vendor rows inspected: 798
+- Legacy item references retained after local catalog verification: 527
+- Legacy item references omitted because they are absent from world.armory_item: 271
+- Curated Forever item IDs added: 262
+- Unique item IDs in the generated pack: 789
+- New collision-free creature IDs: 990000-990018
+- New collision-free spawn GUIDs: 9900000-9900018
+- Wowhead Forever checks for curated replacements: 262 passed, 0 unavailable
+
+## Important compatibility changes
+
+- The original `creature_template`, `creature`, and `npc_vendor` column layouts were replaced with the installed ForeverRepack schema.
+- Old VMaNGOS `npc_trainer`, `npc_gossip`, `gossip_scripts`, and custom C++ ScriptName records were intentionally excluded. They are not compatible with the current TrinityCore Retail/Forever schema.
+- Existing official creature IDs 90000-90032 were not overwritten; nine of them are already used by ForeverRepack.
+- The installed world tables do not reliably roll back this import. A database backup is mandatory before installation; use the dedicated removal script if needed.
+- Old display IDs were accepted only when they are referenced by the installed `creature_template_model` table. The missing ranged-vendor model was replaced by a verified merchant model.
+- The class vendors include the current Forever 1.60.x premium sets: Lightbreaker, Inquisition, Dawnstalker, Duskwraith, Revelation, Fireleaf, Waywatcher, Soulcrusher, and Heretic.
+
+## Vendor inventory
+
+- `990000` — Forever Druid Sets: 66 items
+- `990001` — Forever Shaman Sets: 60 items
+- `990002` — Forever Mage Sets: 50 items
+- `990003` — Forever Warlock Sets: 50 items
+- `990004` — Forever Priest Sets: 50 items
+- `990005` — Forever Hunter Sets: 50 items
+- `990006` — Forever Rogue Sets: 50 items
+- `990007` — Forever Paladin Sets: 60 items
+- `990008` — Forever Warrior Sets: 50 items
+- `990009` — Demon Grimoires: 60 items
+- `990010` — Forever Melee Weapons: 42 items
+- `990011` — Forever Ranged Weapons: 9 items
+- `990012` — Forever Caster Weapons: 11 items
+- `990013` — Forever Off-hands: 12 items
+- `990014` — Forever Off-set Armor: 11 items
+- `990015` — Forever Jewelry: 52 items
+- `990016` — Forever Supplies: 47 items
+- `990017` — Forever Poisons: 20 items
+- `990018` — Forever Mounts: 39 items
+
+## Omitted legacy IDs
+
+1728, 3456, 12651, 12654, 13173, 13198, 13377, 13965, 13967, 13969, 16795, 16796, 16797, 16798, 16799, 16800, 16801, 16802, 16803, 16804, 16805, 16806, 16807, 16808, 16809, 16810, 16811, 16812, 16813, 16814, 16815, 16816, 16817, 16818, 16819, 16820, 16821, 16822, 16823, 16824, 16825, 16826, 16827, 16828, 16829, 16830, 16831, 16832, 16833, 16834, 16835, 16836, 16837, 16838, 16839, 16840, 16841, 16842, 16843, 16844, 16845, 16846, 16847, 16848, 16849, 16850, 16851, 16852, 16853, 16854, 16855, 16856, 16857, 16858, 16859, 16860, 16861, 16862, 16863, 16864, 16865, 16866, 16867, 16868, 16897, 16898, 16899, 16900, 16901, 16902, 16903, 16904, 16905, 16906, 16907, 16908, 16909, 16910, 16911, 16912, 16913, 16914, 16915, 16916, 16917, 16918, 16919, 16920, 16921, 16922, 16923, 16924, 16925, 16926, 16927, 16928, 16929, 16930, 16931, 16932, 16933, 16934, 16935, 16936, 16937, 16938, 16939, 16940, 16941, 16942, 16943, 16944, 16945, 16946, 16947, 16948, 16949, 16950, 16951, 16952, 16953, 16954, 16955, 16956, 16957, 16958, 16959, 16960, 16961, 16962, 16963, 16964, 16965, 16966, 17067, 17070, 17071, 17072, 17104, 17106, 17113, 18202, 18203, 18525, 18537, 18547, 18812, 18824, 19134, 19135, 19136, 19142, 19144, 19146, 19334, 19346, 19347, 19348, 19349, 19352, 19354, 19355, 19357, 19361, 19362, 19367, 19368, 19380, 19381, 19387, 19393, 19398, 19437, 19853, 19854, 19861, 19864, 19885, 19890, 19892, 19918, 19944, 19946, 19961, 19962, 19964, 19965, 19967, 19968, 19993, 20258, 20599, 20621, 20634, 20669, 20688, 21044, 21457, 21463, 21471, 21478, 21493, 21502, 21621, 21635, 21666, 21697, 21704, 21705, 21706, 21708, 21800, 21806, 22321, 22329, 22395, 22691, 22713, 22798, 22799, 22802, 22803, 22807, 22808, 22810, 22811, 22812, 22816, 22818, 22819, 22821, 22936, 22937, 22938, 22960, 22988, 23021, 23039, 23043, 23045, 23048, 23049, 23050, 23056, 23075, 23198, 23219, 23242, 23577, 23663, 23666
+
+## Curated Forever references
+
+- [234032 — Signet Ring of the Bronze Dragonflight](https://www.wowhead.com/forever/item=234032) — local DB + Wowhead Forever
+- [234033 — Signet Ring of the Bronze Dragonflight](https://www.wowhead.com/forever/item=234033) — local DB + Wowhead Forever
+- [234034 — Signet Ring of the Bronze Dragonflight](https://www.wowhead.com/forever/item=234034) — local DB + Wowhead Forever
+- [234035 — Signet Ring of the Bronze Dragonflight](https://www.wowhead.com/forever/item=234035) — local DB + Wowhead Forever
+- [234465 — Reins of the Swift Spectral Tiger](https://www.wowhead.com/forever/item=234465) — local DB + Wowhead Forever
+- [234542 — High Warlord's Greatsword](https://www.wowhead.com/forever/item=234542) — local DB + Wowhead Forever
+- [234543 — High Warlord's Battle Axe](https://www.wowhead.com/forever/item=234543) — local DB + Wowhead Forever
+- [234545 — High Warlord's Pulverizer](https://www.wowhead.com/forever/item=234545) — local DB + Wowhead Forever
+- [234546 — High Warlord's Destroyer](https://www.wowhead.com/forever/item=234546) — local DB + Wowhead Forever
+- [234547 — High Warlord's Pig Sticker](https://www.wowhead.com/forever/item=234547) — local DB + Wowhead Forever
+- [234548 — High Warlord's Pig Poker](https://www.wowhead.com/forever/item=234548) — local DB + Wowhead Forever
+- [234549 — High Warlord's War Staff](https://www.wowhead.com/forever/item=234549) — local DB + Wowhead Forever
+- [234550 — High Warlord's Spellblade](https://www.wowhead.com/forever/item=234550) — local DB + Wowhead Forever
+- [234551 — High Warlord's Battle Mace](https://www.wowhead.com/forever/item=234551) — local DB + Wowhead Forever
+- [234552 — High Warlord's Blade](https://www.wowhead.com/forever/item=234552) — local DB + Wowhead Forever
+- [234553 — High Warlord's Quickblade](https://www.wowhead.com/forever/item=234553) — local DB + Wowhead Forever
+- [234554 — High Warlord's Cleaver](https://www.wowhead.com/forever/item=234554) — local DB + Wowhead Forever
+- [234555 — High Warlord's Bludgeon](https://www.wowhead.com/forever/item=234555) — local DB + Wowhead Forever
+- [234556 — High Warlord's Razor](https://www.wowhead.com/forever/item=234556) — local DB + Wowhead Forever
+- [234557 — High Warlord's Right Claw](https://www.wowhead.com/forever/item=234557) — local DB + Wowhead Forever
+- [234558 — High Warlord's Left Claw](https://www.wowhead.com/forever/item=234558) — local DB + Wowhead Forever
+- [234559 — High Warlord's Recurve](https://www.wowhead.com/forever/item=234559) — local DB + Wowhead Forever
+- [234560 — High Warlord's Crossbow](https://www.wowhead.com/forever/item=234560) — local DB + Wowhead Forever
+- [234561 — High Warlord's Street Sweeper](https://www.wowhead.com/forever/item=234561) — local DB + Wowhead Forever
+- [234562 — High Warlord's Shield Wall](https://www.wowhead.com/forever/item=234562) — local DB + Wowhead Forever
+- [234563 — High Warlord's Tome of Destruction](https://www.wowhead.com/forever/item=234563) — local DB + Wowhead Forever
+- [234564 — High Warlord's Tome of Mending](https://www.wowhead.com/forever/item=234564) — local DB + Wowhead Forever
+- [234565 — Grand Marshal's Claymore](https://www.wowhead.com/forever/item=234565) — local DB + Wowhead Forever
+- [234566 — Grand Marshal's Sunderer](https://www.wowhead.com/forever/item=234566) — local DB + Wowhead Forever
+- [234567 — Grand Marshal's Battle Hammer](https://www.wowhead.com/forever/item=234567) — local DB + Wowhead Forever
+- [234568 — Grand Marshal's Demolisher](https://www.wowhead.com/forever/item=234568) — local DB + Wowhead Forever
+- [234569 — Grand Marshal's Glaive](https://www.wowhead.com/forever/item=234569) — local DB + Wowhead Forever
+- [234570 — Grand Marshal's Polearm](https://www.wowhead.com/forever/item=234570) — local DB + Wowhead Forever
+- [234571 — Grand Marshal's Stave](https://www.wowhead.com/forever/item=234571) — local DB + Wowhead Forever
+- [234574 — Grand Marshal's Mageblade](https://www.wowhead.com/forever/item=234574) — local DB + Wowhead Forever
+- [234576 — Grand Marshal's Warhammer](https://www.wowhead.com/forever/item=234576) — local DB + Wowhead Forever
+- [234578 — Grand Marshal's Longsword](https://www.wowhead.com/forever/item=234578) — local DB + Wowhead Forever
+- [234579 — Grand Marshal's Swiftblade](https://www.wowhead.com/forever/item=234579) — local DB + Wowhead Forever
+- [234580 — Grand Marshal's Handaxe](https://www.wowhead.com/forever/item=234580) — local DB + Wowhead Forever
+- [234581 — Grand Marshal's Punisher](https://www.wowhead.com/forever/item=234581) — local DB + Wowhead Forever
+- [234582 — Grand Marshal's Dirk](https://www.wowhead.com/forever/item=234582) — local DB + Wowhead Forever
+- [234583 — Grand Marshal's Right Hand Blade](https://www.wowhead.com/forever/item=234583) — local DB + Wowhead Forever
+- [234584 — Grand Marshal's Left Hand Blade](https://www.wowhead.com/forever/item=234584) — local DB + Wowhead Forever
+- [234585 — Grand Marshal's Bullseye](https://www.wowhead.com/forever/item=234585) — local DB + Wowhead Forever
+- [234586 — Grand Marshal's Repeater](https://www.wowhead.com/forever/item=234586) — local DB + Wowhead Forever
+- [234587 — Grand Marshal's Hand Cannon](https://www.wowhead.com/forever/item=234587) — local DB + Wowhead Forever
+- [234588 — Grand Marshal's Aegis](https://www.wowhead.com/forever/item=234588) — local DB + Wowhead Forever
+- [234589 — Grand Marshal's Tome of Power](https://www.wowhead.com/forever/item=234589) — local DB + Wowhead Forever
+- [234590 — Grand Marshal's Tome of Restoration](https://www.wowhead.com/forever/item=234590) — local DB + Wowhead Forever
+- [235473 — Grand Marshal's Barricade](https://www.wowhead.com/forever/item=235473) — local DB + Wowhead Forever
+- [235474 — High Warlord's Barricade](https://www.wowhead.com/forever/item=235474) — local DB + Wowhead Forever
+- [235476 — High Warlord's Hacker](https://www.wowhead.com/forever/item=235476) — local DB + Wowhead Forever
+- [235477 — High Warlord's Bonecracker](https://www.wowhead.com/forever/item=235477) — local DB + Wowhead Forever
+- [235478 — High Warlord's Shiv](https://www.wowhead.com/forever/item=235478) — local DB + Wowhead Forever
+- [235479 — Grand Marshal's Shiv](https://www.wowhead.com/forever/item=235479) — local DB + Wowhead Forever
+- [235480 — Grand Marshal's Bonecracker](https://www.wowhead.com/forever/item=235480) — local DB + Wowhead Forever
+- [235481 — Grand Marshal's Hacker](https://www.wowhead.com/forever/item=235481) — local DB + Wowhead Forever
+- [239512 — Lightbreaker Wrists](https://www.wowhead.com/forever/item=239512) — local DB + Wowhead Forever
+- [239513 — Lightbreaker Belt](https://www.wowhead.com/forever/item=239513) — local DB + Wowhead Forever
+- [239514 — Lightbreaker Grips](https://www.wowhead.com/forever/item=239514) — local DB + Wowhead Forever
+- [239515 — Lightbreaker Greaves](https://www.wowhead.com/forever/item=239515) — local DB + Wowhead Forever
+- [239516 — Lightbreaker Shoulders](https://www.wowhead.com/forever/item=239516) — local DB + Wowhead Forever
+- [239517 — Lightbreaker Greathelm](https://www.wowhead.com/forever/item=239517) — local DB + Wowhead Forever
+- [239518 — Lightbreaker Tassets](https://www.wowhead.com/forever/item=239518) — local DB + Wowhead Forever
+- [239519 — Lightbreaker Cuirass](https://www.wowhead.com/forever/item=239519) — local DB + Wowhead Forever
+- [239520 — Lightbreaker Bracers](https://www.wowhead.com/forever/item=239520) — local DB + Wowhead Forever
+- [239521 — Lightbreaker Waistguard](https://www.wowhead.com/forever/item=239521) — local DB + Wowhead Forever
+- [239522 — Lightbreaker Gauntlets](https://www.wowhead.com/forever/item=239522) — local DB + Wowhead Forever
+- [239523 — Lightbreaker Sabatons](https://www.wowhead.com/forever/item=239523) — local DB + Wowhead Forever
+- [239524 — Lightbreaker Pauldrons](https://www.wowhead.com/forever/item=239524) — local DB + Wowhead Forever
+- [239525 — Lightbreaker Helmet](https://www.wowhead.com/forever/item=239525) — local DB + Wowhead Forever
+- [239526 — Lightbreaker Legplates](https://www.wowhead.com/forever/item=239526) — local DB + Wowhead Forever
+- [239527 — Lightbreaker Breastplate](https://www.wowhead.com/forever/item=239527) — local DB + Wowhead Forever
+- [239529 — Dawnstalker Breastplate](https://www.wowhead.com/forever/item=239529) — local DB + Wowhead Forever
+- [239530 — Dawnstalker Greaves](https://www.wowhead.com/forever/item=239530) — local DB + Wowhead Forever
+- [239531 — Dawnstalker Gauntlets](https://www.wowhead.com/forever/item=239531) — local DB + Wowhead Forever
+- [239532 — Dawnstalker Visor](https://www.wowhead.com/forever/item=239532) — local DB + Wowhead Forever
+- [239533 — Dawnstalker Leggings](https://www.wowhead.com/forever/item=239533) — local DB + Wowhead Forever
+- [239534 — Dawnstalker Pauldrons](https://www.wowhead.com/forever/item=239534) — local DB + Wowhead Forever
+- [239535 — Dawnstalker Belt](https://www.wowhead.com/forever/item=239535) — local DB + Wowhead Forever
+- [239536 — Dawnstalker Vambraces](https://www.wowhead.com/forever/item=239536) — local DB + Wowhead Forever
+- [239537 — Dawnstalker Boots](https://www.wowhead.com/forever/item=239537) — local DB + Wowhead Forever
+- [239538 — Dawnstalker Girdle](https://www.wowhead.com/forever/item=239538) — local DB + Wowhead Forever
+- [239539 — Dawnstalker Handguards](https://www.wowhead.com/forever/item=239539) — local DB + Wowhead Forever
+- [239540 — Dawnstalker Headpiece](https://www.wowhead.com/forever/item=239540) — local DB + Wowhead Forever
+- [239541 — Dawnstalker Legguards](https://www.wowhead.com/forever/item=239541) — local DB + Wowhead Forever
+- [239542 — Dawnstalker Spaulders](https://www.wowhead.com/forever/item=239542) — local DB + Wowhead Forever
+- [239543 — Dawnstalker Tunic](https://www.wowhead.com/forever/item=239543) — local DB + Wowhead Forever
+- [239544 — Dawnstalker Wristguards](https://www.wowhead.com/forever/item=239544) — local DB + Wowhead Forever
+- [239547 — Duskwraith Wristguards](https://www.wowhead.com/forever/item=239547) — local DB + Wowhead Forever
+- [239548 — Duskwraith Chestguard](https://www.wowhead.com/forever/item=239548) — local DB + Wowhead Forever
+- [239549 — Duskwraith Grips](https://www.wowhead.com/forever/item=239549) — local DB + Wowhead Forever
+- [239550 — Duskwraith Mask](https://www.wowhead.com/forever/item=239550) — local DB + Wowhead Forever
+- [239551 — Duskwraith Leggings](https://www.wowhead.com/forever/item=239551) — local DB + Wowhead Forever
+- [239552 — Duskwraith Mantle](https://www.wowhead.com/forever/item=239552) — local DB + Wowhead Forever
+- [239553 — Duskwraith Treads](https://www.wowhead.com/forever/item=239553) — local DB + Wowhead Forever
+- [239554 — Duskwraith Belt](https://www.wowhead.com/forever/item=239554) — local DB + Wowhead Forever
+- [239555 — Duskwraith Bracers](https://www.wowhead.com/forever/item=239555) — local DB + Wowhead Forever
+- [239556 — Duskwraith Waistguard](https://www.wowhead.com/forever/item=239556) — local DB + Wowhead Forever
+- [239557 — Duskwraith Gauntlets](https://www.wowhead.com/forever/item=239557) — local DB + Wowhead Forever
+- [239558 — Duskwraith Sabatons](https://www.wowhead.com/forever/item=239558) — local DB + Wowhead Forever
+- [239559 — Duskwraith Pauldrons](https://www.wowhead.com/forever/item=239559) — local DB + Wowhead Forever
+- [239560 — Duskwraith Helmet](https://www.wowhead.com/forever/item=239560) — local DB + Wowhead Forever
+- [239561 — Duskwraith Legplates](https://www.wowhead.com/forever/item=239561) — local DB + Wowhead Forever
+- [239562 — Duskwraith Breastplate](https://www.wowhead.com/forever/item=239562) — local DB + Wowhead Forever
+- [239565 — Garb of Revelation](https://www.wowhead.com/forever/item=239565) — local DB + Wowhead Forever
+- [239572 — Boots of Revelation](https://www.wowhead.com/forever/item=239572) — local DB + Wowhead Forever
+- [239574 — Hands of Revelation](https://www.wowhead.com/forever/item=239574) — local DB + Wowhead Forever
+- [239575 — Crown of Revelation](https://www.wowhead.com/forever/item=239575) — local DB + Wowhead Forever
+- [239577 — Pants of Revelation](https://www.wowhead.com/forever/item=239577) — local DB + Wowhead Forever
+- [239581 — Mantle of Revelation](https://www.wowhead.com/forever/item=239581) — local DB + Wowhead Forever
+- [239582 — Girdle of Revelation](https://www.wowhead.com/forever/item=239582) — local DB + Wowhead Forever
+- [239583 — Wrists of Revelation](https://www.wowhead.com/forever/item=239583) — local DB + Wowhead Forever
+- [239584 — Gloves of Revelation](https://www.wowhead.com/forever/item=239584) — local DB + Wowhead Forever
+- [239585 — Circlet of Revelation](https://www.wowhead.com/forever/item=239585) — local DB + Wowhead Forever
+- [239586 — Shoulderpads of Revelation](https://www.wowhead.com/forever/item=239586) — local DB + Wowhead Forever
+- [239587 — Leggings of Revelation](https://www.wowhead.com/forever/item=239587) — local DB + Wowhead Forever
+- [239588 — Bindings of Revelation](https://www.wowhead.com/forever/item=239588) — local DB + Wowhead Forever
+- [239589 — Sandals of Revelation](https://www.wowhead.com/forever/item=239589) — local DB + Wowhead Forever
+- [239590 — Belt of Revelation](https://www.wowhead.com/forever/item=239590) — local DB + Wowhead Forever
+- [239591 — Robe of Revelation](https://www.wowhead.com/forever/item=239591) — local DB + Wowhead Forever
+- [240020 — Inquisition Legguards](https://www.wowhead.com/forever/item=240020) — local DB + Wowhead Forever
+- [240021 — Inquisition Spaulders](https://www.wowhead.com/forever/item=240021) — local DB + Wowhead Forever
+- [240022 — Inquisition Boots](https://www.wowhead.com/forever/item=240022) — local DB + Wowhead Forever
+- [240023 — Inquisition Vambraces](https://www.wowhead.com/forever/item=240023) — local DB + Wowhead Forever
+- [240024 — Inquisition Belt](https://www.wowhead.com/forever/item=240024) — local DB + Wowhead Forever
+- [240025 — Inquisition Shoulderplates](https://www.wowhead.com/forever/item=240025) — local DB + Wowhead Forever
+- [240026 — Inquisition Leggings](https://www.wowhead.com/forever/item=240026) — local DB + Wowhead Forever
+- [240027 — Inquisition Helmet](https://www.wowhead.com/forever/item=240027) — local DB + Wowhead Forever
+- [240028 — Inquisition Gloves](https://www.wowhead.com/forever/item=240028) — local DB + Wowhead Forever
+- [240029 — Inquisition Greaves](https://www.wowhead.com/forever/item=240029) — local DB + Wowhead Forever
+- [240030 — Inquisition Breastplate](https://www.wowhead.com/forever/item=240030) — local DB + Wowhead Forever
+- [240031 — Inquisition Bracers](https://www.wowhead.com/forever/item=240031) — local DB + Wowhead Forever
+- [240032 — Inquisition Waistguard](https://www.wowhead.com/forever/item=240032) — local DB + Wowhead Forever
+- [240033 — Inquisition Pauldrons](https://www.wowhead.com/forever/item=240033) — local DB + Wowhead Forever
+- [240034 — Inquisition Legplates](https://www.wowhead.com/forever/item=240034) — local DB + Wowhead Forever
+- [240035 — Inquisition Crown](https://www.wowhead.com/forever/item=240035) — local DB + Wowhead Forever
+- [240036 — Inquisition Gauntlets](https://www.wowhead.com/forever/item=240036) — local DB + Wowhead Forever
+- [240037 — Inquisition Sabatons](https://www.wowhead.com/forever/item=240037) — local DB + Wowhead Forever
+- [240038 — Inquisition Chestguard](https://www.wowhead.com/forever/item=240038) — local DB + Wowhead Forever
+- [240039 — Inquisition Tunic](https://www.wowhead.com/forever/item=240039) — local DB + Wowhead Forever
+- [240040 — Inquisition Headpiece](https://www.wowhead.com/forever/item=240040) — local DB + Wowhead Forever
+- [240041 — Inquisition Handguards](https://www.wowhead.com/forever/item=240041) — local DB + Wowhead Forever
+- [240042 — Inquisition Wristguards](https://www.wowhead.com/forever/item=240042) — local DB + Wowhead Forever
+- [240043 — Inquisition Girdle](https://www.wowhead.com/forever/item=240043) — local DB + Wowhead Forever
+- [240044 — Fireleaf Wristwraps](https://www.wowhead.com/forever/item=240044) — local DB + Wowhead Forever
+- [240045 — Fireleaf Waistguard](https://www.wowhead.com/forever/item=240045) — local DB + Wowhead Forever
+- [240046 — Fireleaf Mantle](https://www.wowhead.com/forever/item=240046) — local DB + Wowhead Forever
+- [240047 — Fireleaf Pants](https://www.wowhead.com/forever/item=240047) — local DB + Wowhead Forever
+- [240048 — Fireleaf Hood](https://www.wowhead.com/forever/item=240048) — local DB + Wowhead Forever
+- [240049 — Fireleaf Mitts](https://www.wowhead.com/forever/item=240049) — local DB + Wowhead Forever
+- [240050 — Fireleaf Boots](https://www.wowhead.com/forever/item=240050) — local DB + Wowhead Forever
+- [240051 — Fireleaf Garb](https://www.wowhead.com/forever/item=240051) — local DB + Wowhead Forever
+- [240052 — Fireleaf Bindings](https://www.wowhead.com/forever/item=240052) — local DB + Wowhead Forever
+- [240053 — Fireleaf Belt](https://www.wowhead.com/forever/item=240053) — local DB + Wowhead Forever
+- [240054 — Fireleaf Shoulderpads](https://www.wowhead.com/forever/item=240054) — local DB + Wowhead Forever
+- [240055 — Fireleaf Leggings](https://www.wowhead.com/forever/item=240055) — local DB + Wowhead Forever
+- [240056 — Fireleaf Circlet](https://www.wowhead.com/forever/item=240056) — local DB + Wowhead Forever
+- [240057 — Fireleaf Gloves](https://www.wowhead.com/forever/item=240057) — local DB + Wowhead Forever
+- [240058 — Fireleaf Sandals](https://www.wowhead.com/forever/item=240058) — local DB + Wowhead Forever
+- [240059 — Fireleaf Robe](https://www.wowhead.com/forever/item=240059) — local DB + Wowhead Forever
+- [240060 — Waywatcher Wraps](https://www.wowhead.com/forever/item=240060) — local DB + Wowhead Forever
+- [240061 — Waywatcher Sash](https://www.wowhead.com/forever/item=240061) — local DB + Wowhead Forever
+- [240062 — Waywatcher Shoulderpads](https://www.wowhead.com/forever/item=240062) — local DB + Wowhead Forever
+- [240063 — Waywatcher Trousers](https://www.wowhead.com/forever/item=240063) — local DB + Wowhead Forever
+- [240064 — Waywatcher Cowl](https://www.wowhead.com/forever/item=240064) — local DB + Wowhead Forever
+- [240065 — Waywatcher Grips](https://www.wowhead.com/forever/item=240065) — local DB + Wowhead Forever
+- [240066 — Waywatcher Stompers](https://www.wowhead.com/forever/item=240066) — local DB + Wowhead Forever
+- [240067 — Waywatcher Vest](https://www.wowhead.com/forever/item=240067) — local DB + Wowhead Forever
+- [240068 — Waywatcher Bindings](https://www.wowhead.com/forever/item=240068) — local DB + Wowhead Forever
+- [240069 — Waywatcher Cord](https://www.wowhead.com/forever/item=240069) — local DB + Wowhead Forever
+- [240070 — Waywatcher Mantle](https://www.wowhead.com/forever/item=240070) — local DB + Wowhead Forever
+- [240071 — Waywatcher Kilt](https://www.wowhead.com/forever/item=240071) — local DB + Wowhead Forever
+- [240072 — Waywatcher Hood](https://www.wowhead.com/forever/item=240072) — local DB + Wowhead Forever
+- [240073 — Waywatcher Mitts](https://www.wowhead.com/forever/item=240073) — local DB + Wowhead Forever
+- [240074 — Waywatcher Sandals](https://www.wowhead.com/forever/item=240074) — local DB + Wowhead Forever
+- [240075 — Waywatcher Leathers](https://www.wowhead.com/forever/item=240075) — local DB + Wowhead Forever
+- [240076 — Waywatcher Bracers](https://www.wowhead.com/forever/item=240076) — local DB + Wowhead Forever
+- [240077 — Waywatcher Waistguard](https://www.wowhead.com/forever/item=240077) — local DB + Wowhead Forever
+- [240078 — Waywatcher Pauldrons](https://www.wowhead.com/forever/item=240078) — local DB + Wowhead Forever
+- [240079 — Waywatcher Leggings](https://www.wowhead.com/forever/item=240079) — local DB + Wowhead Forever
+- [240080 — Waywatcher Headdress](https://www.wowhead.com/forever/item=240080) — local DB + Wowhead Forever
+- [240081 — Waywatcher Gauntlets](https://www.wowhead.com/forever/item=240081) — local DB + Wowhead Forever
+- [240082 — Waywatcher Sabatons](https://www.wowhead.com/forever/item=240082) — local DB + Wowhead Forever
+- [240083 — Waywatcher Armor](https://www.wowhead.com/forever/item=240083) — local DB + Wowhead Forever
+- [240084 — Waywatcher Wristguards](https://www.wowhead.com/forever/item=240084) — local DB + Wowhead Forever
+- [240085 — Waywatcher Girdle](https://www.wowhead.com/forever/item=240085) — local DB + Wowhead Forever
+- [240086 — Waywatcher Spaulders](https://www.wowhead.com/forever/item=240086) — local DB + Wowhead Forever
+- [240087 — Waywatcher Legguards](https://www.wowhead.com/forever/item=240087) — local DB + Wowhead Forever
+- [240088 — Waywatcher Headpiece](https://www.wowhead.com/forever/item=240088) — local DB + Wowhead Forever
+- [240089 — Waywatcher Handguards](https://www.wowhead.com/forever/item=240089) — local DB + Wowhead Forever
+- [240090 — Waywatcher Boots](https://www.wowhead.com/forever/item=240090) — local DB + Wowhead Forever
+- [240091 — Waywatcher Tunic](https://www.wowhead.com/forever/item=240091) — local DB + Wowhead Forever
+- [240092 — Soulcrusher Tunic](https://www.wowhead.com/forever/item=240092) — local DB + Wowhead Forever
+- [240093 — Soulcrusher Boots](https://www.wowhead.com/forever/item=240093) — local DB + Wowhead Forever
+- [240095 — Soulcrusher Handguards](https://www.wowhead.com/forever/item=240095) — local DB + Wowhead Forever
+- [240096 — Soulcrusher Headpiece](https://www.wowhead.com/forever/item=240096) — local DB + Wowhead Forever
+- [240097 — Soulcrusher Legguards](https://www.wowhead.com/forever/item=240097) — local DB + Wowhead Forever
+- [240098 — Soulcrusher Spaulders](https://www.wowhead.com/forever/item=240098) — local DB + Wowhead Forever
+- [240099 — Soulcrusher Girdle](https://www.wowhead.com/forever/item=240099) — local DB + Wowhead Forever
+- [240100 — Soulcrusher Wristguards](https://www.wowhead.com/forever/item=240100) — local DB + Wowhead Forever
+- [240101 — Soulcrusher Chestguard](https://www.wowhead.com/forever/item=240101) — local DB + Wowhead Forever
+- [240102 — Soulcrusher Sabatons](https://www.wowhead.com/forever/item=240102) — local DB + Wowhead Forever
+- [240103 — Soulcrusher Gloves](https://www.wowhead.com/forever/item=240103) — local DB + Wowhead Forever
+- [240104 — Soulcrusher Faceguard](https://www.wowhead.com/forever/item=240104) — local DB + Wowhead Forever
+- [240105 — Soulcrusher Legplates](https://www.wowhead.com/forever/item=240105) — local DB + Wowhead Forever
+- [240106 — Soulcrusher Pauldrons](https://www.wowhead.com/forever/item=240106) — local DB + Wowhead Forever
+- [240107 — Soulcrusher Waistguard](https://www.wowhead.com/forever/item=240107) — local DB + Wowhead Forever
+- [240108 — Soulcrusher Bracers](https://www.wowhead.com/forever/item=240108) — local DB + Wowhead Forever
+- [240109 — Soulcrusher Embrace](https://www.wowhead.com/forever/item=240109) — local DB + Wowhead Forever
+- [240110 — Soulcrusher Greaves](https://www.wowhead.com/forever/item=240110) — local DB + Wowhead Forever
+- [240122 — Soulcrusher Mitts](https://www.wowhead.com/forever/item=240122) — local DB + Wowhead Forever
+- [240123 — Soulcrusher Crown](https://www.wowhead.com/forever/item=240123) — local DB + Wowhead Forever
+- [240124 — Soulcrusher Kilt](https://www.wowhead.com/forever/item=240124) — local DB + Wowhead Forever
+- [240125 — Soulcrusher Mantle](https://www.wowhead.com/forever/item=240125) — local DB + Wowhead Forever
+- [240126 — Soulcrusher Cord](https://www.wowhead.com/forever/item=240126) — local DB + Wowhead Forever
+- [240127 — Soulcrusher Bindings](https://www.wowhead.com/forever/item=240127) — local DB + Wowhead Forever
+- [240128 — Soulcrusher Armor](https://www.wowhead.com/forever/item=240128) — local DB + Wowhead Forever
+- [240129 — Soulcrusher Treads](https://www.wowhead.com/forever/item=240129) — local DB + Wowhead Forever
+- [240130 — Soulcrusher Grips](https://www.wowhead.com/forever/item=240130) — local DB + Wowhead Forever
+- [240131 — Soulcrusher Helmet](https://www.wowhead.com/forever/item=240131) — local DB + Wowhead Forever
+- [240134 — Soulcrusher Leggings](https://www.wowhead.com/forever/item=240134) — local DB + Wowhead Forever
+- [240135 — Soulcrusher Epaulets](https://www.wowhead.com/forever/item=240135) — local DB + Wowhead Forever
+- [240136 — Soulcrusher Belt](https://www.wowhead.com/forever/item=240136) — local DB + Wowhead Forever
+- [240137 — Soulcrusher Vambraces](https://www.wowhead.com/forever/item=240137) — local DB + Wowhead Forever
+- [240138 — Heretic Robe](https://www.wowhead.com/forever/item=240138) — local DB + Wowhead Forever
+- [240139 — Heretic Sandals](https://www.wowhead.com/forever/item=240139) — local DB + Wowhead Forever
+- [240140 — Heretic Gloves](https://www.wowhead.com/forever/item=240140) — local DB + Wowhead Forever
+- [240141 — Heretic Cowl](https://www.wowhead.com/forever/item=240141) — local DB + Wowhead Forever
+- [240142 — Heretic Leggings](https://www.wowhead.com/forever/item=240142) — local DB + Wowhead Forever
+- [240143 — Heretic Shoulderpads](https://www.wowhead.com/forever/item=240143) — local DB + Wowhead Forever
+- [240144 — Heretic Belt](https://www.wowhead.com/forever/item=240144) — local DB + Wowhead Forever
+- [240145 — Heretic Bindings](https://www.wowhead.com/forever/item=240145) — local DB + Wowhead Forever
+- [240146 — Heretic Garb](https://www.wowhead.com/forever/item=240146) — local DB + Wowhead Forever
+- [240147 — Heretic Handguards](https://www.wowhead.com/forever/item=240147) — local DB + Wowhead Forever
+- [240148 — Heretic Hood](https://www.wowhead.com/forever/item=240148) — local DB + Wowhead Forever
+- [240149 — Heretic Pants](https://www.wowhead.com/forever/item=240149) — local DB + Wowhead Forever
+- [240150 — Heretic Mantle](https://www.wowhead.com/forever/item=240150) — local DB + Wowhead Forever
+- [240151 — Heretic Waistguard](https://www.wowhead.com/forever/item=240151) — local DB + Wowhead Forever
+- [240152 — Heretic Wristguards](https://www.wowhead.com/forever/item=240152) — local DB + Wowhead Forever
+- [240153 — Heretic Boots](https://www.wowhead.com/forever/item=240153) — local DB + Wowhead Forever
+- [246055 — Inquisition Grips](https://www.wowhead.com/forever/item=246055) — local DB + Wowhead Forever
+- [246056 — Inquisition Armbraces](https://www.wowhead.com/forever/item=246056) — local DB + Wowhead Forever
+- [246057 — Inquisition Stompers](https://www.wowhead.com/forever/item=246057) — local DB + Wowhead Forever
+- [246058 — Inquisition Plate Pants](https://www.wowhead.com/forever/item=246058) — local DB + Wowhead Forever
+- [246059 — Inquisition Cord](https://www.wowhead.com/forever/item=246059) — local DB + Wowhead Forever
+- [246060 — Inquisition Cuirass](https://www.wowhead.com/forever/item=246060) — local DB + Wowhead Forever
+- [246061 — Inquisition Epaulets](https://www.wowhead.com/forever/item=246061) — local DB + Wowhead Forever
+- [246062 — Inquisition Faceguard](https://www.wowhead.com/forever/item=246062) — local DB + Wowhead Forever
+- [265838 — Green Skeletal Horse](https://www.wowhead.com/forever/item=265838) — local DB + Wowhead Forever
+- [265839 — Dark Skeletal Horse](https://www.wowhead.com/forever/item=265839) — local DB + Wowhead Forever
+- [265840 — Purple Skeletal Horse](https://www.wowhead.com/forever/item=265840) — local DB + Wowhead Forever
+- [269671 — Swift Empyrean Galestrider](https://www.wowhead.com/forever/item=269671) — local DB + Wowhead Forever
+- [269673 — Swift Regal Galestrider](https://www.wowhead.com/forever/item=269673) — local DB + Wowhead Forever
+- [269678 — Swift Stormy Galestrider](https://www.wowhead.com/forever/item=269678) — local DB + Wowhead Forever
+- [274799 — Ochre Skeletal Warhorse](https://www.wowhead.com/forever/item=274799) — local DB + Wowhead Forever
+- [274933 — Swift Umber Galestrider](https://www.wowhead.com/forever/item=274933) — local DB + Wowhead Forever
+- [275981 — Ferocious Watcher's Signet](https://www.wowhead.com/forever/item=275981) — local DB + Wowhead Forever
+- [275982 — Brilliant Watcher's Signet](https://www.wowhead.com/forever/item=275982) — local DB + Wowhead Forever
+- [275983 — Vigilant Watcher's Signet](https://www.wowhead.com/forever/item=275983) — local DB + Wowhead Forever
+- [275984 — Stalwart Watcher's Signet](https://www.wowhead.com/forever/item=275984) — local DB + Wowhead Forever
+- [280544 — Cerulean Prideclaw](https://www.wowhead.com/forever/item=280544) — local DB + Wowhead Forever

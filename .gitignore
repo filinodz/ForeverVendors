@@ -1,0 +1,18 @@
+# Generated release output
+ForeverVendors/
+dist/
+releases/
+*.zip
+
+# Local data and logs
+*.log
+*.bak
+.env
+.env.*
+
+# Tooling and OS
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+desktop.ini

@@ -1,0 +1,35 @@
+name: Vendor pack bug
+description: Report an import, spawn or verified item problem
+title: "[Bug]: "
+labels: ["bug", "needs-triage"]
+body:
+  - type: input
+    id: repack
+    attributes:
+      label: ForeverRepack version
+    validations:
+      required: true
+  - type: dropdown
+    id: area
+    attributes:
+      label: Problem type
+      options: ["SQL import", "Vendor template", "Vendor spawn", "Missing/wrong item", "Removal", "Builder", "Other"]
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduction steps
+    validations:
+      required: true
+  - type: textarea
+    id: counts
+    attributes:
+      label: Sanitized verification results
+      description: Include the three counts from the README and relevant IDs, without credentials.
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected and actual behavior
+    validations:
+      required: true

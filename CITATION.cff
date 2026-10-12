@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+message: "If you use ForeverVendors, please credit the project and FilinoDZ."
+type: software
+title: "ForeverVendors"
+version: 1.0.0
+date-released: 2026-10-12
+authors:
+  - family-names: "FilinoDZ"
+    alias: "filinodz"
+repository-code: "https://github.com/filinodz/ForeverVendors"
+url: "https://github.com/filinodz/ForeverVendors"
+keywords:
+  - World of Warcraft
+  - ForeverRepack
+  - SQL
+  - GM Island
